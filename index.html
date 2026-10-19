@@ -107,8 +107,9 @@
   #answer { display: none; }
   #answer.show { display: block; animation: pop .5s ease both; }
   @keyframes pop { from { opacity: 0; transform: scale(.94) translateY(10px); } to { opacity: 1; transform: none; } }
-  .yay { font-family: "Caveat", cursive; font-size: 40px; margin: 0 0 18px; color: var(--pink-deep); line-height: 1.1; }
+  .yay { font-family: "Caveat", cursive; font-size: 40px; margin: 0; color: var(--pink-deep); line-height: 1.1; }
 
+  .quote { font-size: 16px; line-height: 1.5; margin: 8px 0 20px; }
   .details {
     list-style: none; padding: 0; margin: 0 0 22px;
     text-align: left;
@@ -164,10 +165,10 @@
 </head>
 <body>
 
-<span class="float" style="top:6%;left:6%;font-size:28px">🦇</span>
+<span class="float" style="top:6%;left:6%;font-size:28px">🦁</span>
 <span class="float" style="top:14%;right:8%;font-size:22px;animation-delay:-3s">💗</span>
 <span class="float" style="bottom:12%;left:10%;font-size:24px;animation-delay:-5s">💕</span>
-<span class="float" style="bottom:20%;right:6%;font-size:26px;animation-delay:-2s">🦇</span>
+<span class="float" style="bottom:20%;right:6%;font-size:26px;animation-delay:-2s">🐑</span>
 <span class="float" style="top:48%;left:3%;font-size:18px;animation-delay:-6s">✨</span>
 
 <main>
@@ -196,6 +197,7 @@
 
     <div id="answer" aria-live="polite">
       <p class="yay">Ура-а-а! 💖</p>
+      <p class="quote">Наконец-то узнаешь, откуда цитата «Лев влюбился в овечку… 🦁💗🐑»</p>
 
       <ul class="details">
         <li><span class="ic">🎬</span><span><b>Фильм</b>«Сумерки» (2008), 2 часа. Язык оригинала, русские субтитры</span></li>
@@ -217,7 +219,10 @@
     var no = document.getElementById('no');
     var question = document.getElementById('question');
     var answer = document.getElementById('answer');
-    // стартовая надпись «Ой, в письку эти сумерки» стоит в разметке и больше не повторяется
+    // стартовая надпись «Ой, в письку эти сумерки» стоит в разметке;
+    // на телефоне после касания на пару секунд показываем ответ и возвращаем её
+    var startText = no.textContent;
+    var backTimer;
     var phrases = ['Я с тобой 3 часа болгарку выбирала!', 'Носки не получишь', 'Никаких тебе таек', 'Точно?', 'Подумай ещё 🥺', 'Ну Дима!', 'Эдвард бы позвал', 'Не-а 🙈', 'Попробуй ещё'];
     var tries = 0;
 
@@ -226,7 +231,8 @@
     function runAway(e) {
       if (e && e.cancelable) e.preventDefault();
       // одно касание даёт и touchstart, и pointerdown — прыгаем один раз
-      if (Date.now() - lastRun < 350) return;
+      var touch = e && (e.type === 'touchstart' || e.type === 'pointerdown');
+      if (touch && Date.now() - lastRun < 350) return;
       lastRun = Date.now();
       tries++;
       no.textContent = phrases[(tries - 1) % phrases.length];
@@ -255,6 +261,15 @@
       } while (guard < 200 && x < cx + hw && x + w > cx - hw && t < cy + hh && t + h > cy - hh);
       no.style.left = x + 'px';
       no.style.top = t + 'px';
+      if (touch) {
+        clearTimeout(backTimer);
+        backTimer = setTimeout(function () {
+          no.textContent = startText;
+          // надпись длиннее — подвинуть, чтобы не вылезла за край экрана
+          var vw = document.documentElement.clientWidth, r = no.getBoundingClientRect();
+          if (r.right > vw - 12) no.style.left = Math.max(12, vw - 12 - no.offsetWidth) + 'px';
+        }, 2500);
+      }
     }
     no.addEventListener('pointerdown', runAway);
     no.addEventListener('touchstart', runAway, { passive: false });
@@ -267,7 +282,7 @@
     });
 
     function hearts(n) {
-      var list = ['💗', '💖', '💕', '💘', '🦇', '✨'];
+      var list = ['💗', '🦁', '💖', '🐑', '💕', '💘', '✨'];
       for (var i = 0; i < n; i++) {
         var s = document.createElement('span');
         s.className = 'heart-fall';
