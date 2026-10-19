@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="only light">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ffc2d9">
+<title>Приглашение пригласить меня на сумерки 💗</title>
+<meta name="description" content="Дима, у меня к тебе очень важный вопрос…">
+<meta property="og:title" content="Приглашение 💌">
+<meta property="og:description" content="Дима, у меня к тебе очень важный вопрос…">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg1: #fff0f6;
+    --bg2: #ffd1e3;
+    --pink: #ff6fa5;
+    --pink-deep: #e0457f;
+    --berry: #8c2154;
+    --card: rgba(255, 255, 255, .78);
+    --shadow: 0 10px 30px rgba(224, 69, 127, .18);
+    color-scheme: only light;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body {
+    min-height: 100vh;
+    min-height: 100svh;
+    font-family: "Comfortaa", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--berry);
+    background:
+      radial-gradient(circle at 15% 10%, #fff 0 8%, transparent 30%),
+      radial-gradient(circle at 90% 85%, #ffe3ee 0 10%, transparent 35%),
+      linear-gradient(160deg, var(--bg1), var(--bg2));
+    background-attachment: fixed;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: max(20px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
+  }
+
+  /* фоновые сердечки и летучие мышки */
+  .float {
+    position: fixed; z-index: 0; pointer-events: none; user-select: none;
+    opacity: .35; animation: drift 9s ease-in-out infinite;
+  }
+  @keyframes drift {
+    0%, 100% { transform: translateY(0) rotate(-6deg); }
+    50% { transform: translateY(-14px) rotate(6deg); }
+  }
+
+  main {
+    position: relative; z-index: 1;
+    width: 100%; max-width: 440px;
+    text-align: center;
+  }
+  .card {
+    background: var(--card);
+    border: 2px solid #fff;
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    padding: 28px 22px 26px;
+  }
+
+  .apple { width: 120px; height: 120px; margin: 0 auto 6px; display: block; animation: beat 1.6s ease-in-out infinite; }
+  @keyframes beat { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.08); } 30% { transform: scale(1); } 45% { transform: scale(1.05); } }
+
+  h1 { font-size: 24px; line-height: 1.35; margin: 10px 0 24px; font-weight: 700; }
+  h1 .film { white-space: nowrap; color: var(--pink-deep); }
+
+  .buttons {
+    position: relative;
+    display: flex; flex-wrap: wrap; gap: 14px;
+    justify-content: center; align-items: center;
+    min-height: 64px;
+  }
+  button, .btn {
+    font: inherit; font-weight: 700; font-size: 18px;
+    border: 0; border-radius: 999px; cursor: pointer;
+    min-height: 52px; padding: 14px 28px;
+    touch-action: manipulation;
+    transition: transform .25s ease, box-shadow .25s ease, background .25s;
+  }
+  #yes {
+    color: #fff;
+    background: linear-gradient(135deg, var(--pink), var(--pink-deep));
+    box-shadow: 0 8px 20px rgba(224, 69, 127, .35);
+    transform-origin: center;
+  }
+  #yes:active { transform: scale(.96); }
+  #no {
+    color: var(--berry);
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(140, 33, 84, .12);
+    z-index: 5;
+  }
+  #yes, #no { max-width: 100%; line-height: 1.3; }
+  #no.run { position: fixed; max-width: calc(100vw - 24px); transition: left .25s ease, top .25s ease; }
+
+  /* после «да» */
+  #answer { display: none; }
+  #answer.show { display: block; animation: pop .5s ease both; }
+  @keyframes pop { from { opacity: 0; transform: scale(.94) translateY(10px); } to { opacity: 1; transform: none; } }
+  .yay { font-family: "Caveat", cursive; font-size: 40px; margin: 0 0 18px; color: var(--pink-deep); line-height: 1.1; }
+
+  .details {
+    list-style: none; padding: 0; margin: 0 0 22px;
+    text-align: left;
+    display: grid; gap: 10px;
+  }
+  .details li {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: #fff; border-radius: 18px;
+    padding: 12px 14px;
+    font-size: 15px; line-height: 1.45;
+    box-shadow: 0 3px 10px rgba(224, 69, 127, .08);
+  }
+  .details .ic { font-size: 22px; line-height: 1.1; flex: none; }
+  .details b { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--pink-deep); margin-bottom: 2px; }
+  .metro { display: inline-flex; align-items: center; gap: 6px; }
+  .metro i {
+    width: 18px; height: 18px; border-radius: 50%; flex: none;
+    background: #0033a0; color: #fff; font-style: normal; font-size: 11px; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+
+  .btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; text-decoration: none;
+  }
+  .btn-main {
+    color: #fff;
+    background: linear-gradient(135deg, var(--pink), var(--pink-deep));
+    box-shadow: 0 8px 20px rgba(224, 69, 127, .35);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+  .btn-soft { margin-top: 12px; color: var(--berry); background: #fff; box-shadow: 0 4px 12px rgba(140, 33, 84, .12); font-size: 16px; }
+
+
+  /* падающие сердечки */
+  .heart-fall {
+    position: fixed; top: -40px; z-index: 50; pointer-events: none;
+    animation: fall linear forwards;
+  }
+  @keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: .2; } }
+
+  @media (max-width: 360px) {
+    .card { padding: 22px 16px; border-radius: 24px; }
+    h1 { font-size: 21px; }
+    .apple { width: 96px; height: 96px; }
+    button, .btn { font-size: 16px; padding: 12px 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<span class="float" style="top:6%;left:6%;font-size:28px">🦇</span>
+<span class="float" style="top:14%;right:8%;font-size:22px;animation-delay:-3s">💗</span>
+<span class="float" style="bottom:12%;left:10%;font-size:24px;animation-delay:-5s">💕</span>
+<span class="float" style="bottom:20%;right:6%;font-size:26px;animation-delay:-2s">🦇</span>
+<span class="float" style="top:48%;left:3%;font-size:18px;animation-delay:-6s">✨</span>
+
+<main>
+  <section class="card">
+
+    <!-- розовое сердечко -->
+    <svg class="apple" viewBox="0 0 120 120" aria-hidden="true">
+      <defs>
+        <radialGradient id="ap" cx="38%" cy="35%" r="70%">
+          <stop offset="0" stop-color="#ffb3cf"/>
+          <stop offset=".55" stop-color="#ff5f98"/>
+          <stop offset="1" stop-color="#c8326c"/>
+        </radialGradient>
+      </defs>
+      <path d="M60 104C30 82 12 64 12 42c0-15 11-26 25-26 10 0 18 6 23 14 5-8 13-14 23-14 14 0 25 11 25 26 0 22-18 40-48 62z" fill="url(#ap)"/>
+      <ellipse cx="36" cy="38" rx="7" ry="11" fill="#fff" opacity=".45" transform="rotate(-35 36 38)"/>
+    </svg>
+
+    <div id="question">
+      <h1>Приглашение пригласить меня на сумерки</h1>
+      <div class="buttons">
+        <button id="yes" type="button">Хорошо, моя кошечка хорошая 💗</button>
+        <button id="no" type="button">Ой, в письку эти сумерки</button>
+      </div>
+    </div>
+
+    <div id="answer" aria-live="polite">
+      <p class="yay">Ура-а-а! 💖</p>
+
+      <ul class="details">
+        <li><span class="ic">🎬</span><span><b>Фильм</b>«Сумерки» (2008), 2 часа. Язык оригинала, русские субтитры</span></li>
+        <li><span class="ic">📅</span><span><b>Когда</b>Суббота, 31 октября, <strong>19:00</strong></span></li>
+        <li><span class="ic">🏛️</span><span><b>Где</b>Киноцентр «Домжур», зал&nbsp;1<br>Никитский бульвар, 8А (Дом журналиста)</span></li>
+        <li><span class="ic">🚇</span><span><b>Метро</b><span class="metro"><i>М</i>Арбатская</span>, 5–7 минут пешком</span></li>
+      </ul>
+
+      <a class="btn btn-main" href="https://arbatkino.ru/release/1859?date=2026-10-31">Купить билеты 🎟️</a>
+
+    </div>
+
+  </section>
+</main>
+
+<script>
+  (function () {
+    var yes = document.getElementById('yes');
+    var no = document.getElementById('no');
+    var question = document.getElementById('question');
+    var answer = document.getElementById('answer');
+    // стартовая надпись «Ой, в письку эти сумерки» стоит в разметке и больше не повторяется
+    var phrases = ['Я с тобой 3 часа болгарку выбирала!', 'Носки не получишь', 'Никаких тебе таек', 'Точно?', 'Подумай ещё 🥺', 'Ну Дима!', 'Эдвард бы позвал', 'Не-а 🙈', 'Попробуй ещё'];
+    var tries = 0;
+
+    // вторая кнопка убегает: на телефоне от касания, на компьютере от курсора
+    var lastRun = 0;
+    function runAway(e) {
+      if (e && e.cancelable) e.preventDefault();
+      // одно касание даёт и touchstart, и pointerdown — прыгаем один раз
+      if (Date.now() - lastRun < 350) return;
+      lastRun = Date.now();
+      tries++;
+      no.textContent = phrases[(tries - 1) % phrases.length];
+      var r = no.getBoundingClientRect();
+      if (!no.classList.contains('run')) {
+        no.style.left = r.left + 'px';
+        no.style.top = r.top + 'px';
+        no.classList.add('run');
+        no.offsetWidth; // зафиксировать стартовую позицию перед анимацией
+      }
+      var vw = document.documentElement.clientWidth;
+      var vh = window.innerHeight;
+      var pad = 12;
+      var w = no.offsetWidth, h = no.offsetHeight;
+      // «Да» подрастает; считаем её итоговый размер сразу, а не середину анимации
+      var grow = Math.min(1 + tries * 0.06, 1.4, (vw - pad * 2) / yes.offsetWidth);
+      yes.style.transform = 'scale(' + grow + ')';
+      var yr = yes.getBoundingClientRect();
+      var cx = yr.left + yr.width / 2, cy = yr.top + yr.height / 2;
+      var hw = yes.offsetWidth * grow / 2 + 12, hh = yes.offsetHeight * grow / 2 + 12;
+      var x, t, guard = 0;
+      do {
+        x = pad + Math.random() * Math.max(0, vw - w - pad * 2);
+        t = pad + Math.random() * Math.max(0, vh - h - pad * 2);
+        guard++;
+      } while (guard < 200 && x < cx + hw && x + w > cx - hw && t < cy + hh && t + h > cy - hh);
+      no.style.left = x + 'px';
+      no.style.top = t + 'px';
+    }
+    no.addEventListener('pointerdown', runAway);
+    no.addEventListener('touchstart', runAway, { passive: false });
+    no.addEventListener('mouseenter', runAway);
+    no.addEventListener('click', runAway);
+    // на компьютере удирает, ещё когда курсор только подбирается
+    document.addEventListener('mousemove', function (e) {
+      var r = no.getBoundingClientRect(), d = 40;
+      if (e.clientX > r.left - d && e.clientX < r.right + d && e.clientY > r.top - d && e.clientY < r.bottom + d) runAway();
+    });
+
+    function hearts(n) {
+      var list = ['💗', '💖', '💕', '💘', '🦇', '✨'];
+      for (var i = 0; i < n; i++) {
+        var s = document.createElement('span');
+        s.className = 'heart-fall';
+        s.textContent = list[i % list.length];
+        s.style.left = Math.random() * 100 + 'vw';
+        s.style.fontSize = 18 + Math.random() * 20 + 'px';
+        s.style.animationDuration = 2.5 + Math.random() * 2.5 + 's';
+        s.style.animationDelay = Math.random() * 1.2 + 's';
+        document.body.appendChild(s);
+        setTimeout(function (el) { el.remove(); }, 6500, s);
+      }
+    }
+
+    yes.addEventListener('click', function () {
+      question.style.display = 'none';
+      no.style.display = 'none';
+      answer.classList.add('show');
+      hearts(40);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+  })();
+</script>
+</body>
+</html>
