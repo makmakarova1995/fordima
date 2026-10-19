@@ -101,6 +101,7 @@
     z-index: 5;
   }
   #yes, #no { max-width: 100%; line-height: 1.3; }
+  #no.said { color: #fff; background: linear-gradient(135deg, var(--pink), var(--pink-deep)); }
   #no.run { position: fixed; max-width: calc(100vw - 24px); transition: left .25s ease, top .25s ease; }
 
   /* после «да» */
@@ -220,8 +221,8 @@
     var question = document.getElementById('question');
     var answer = document.getElementById('answer');
     // стартовая надпись «Ой, в письку эти сумерки» стоит в разметке;
-    // на телефоне после касания на пару секунд показываем ответ и возвращаем её
-    var startText = no.textContent;
+    // на телефоне после касания 3 секунды показываем ответ на розовом, потом кнопка становится «Нет»
+    var backText = 'Нет';
     var backTimer;
     var phrases = ['Я с тобой 3 часа болгарку выбирала!', 'Носки не получишь', 'Никаких тебе таек', 'Точно?', 'Подумай ещё 🥺', 'Ну Дима!', 'Эдвард бы позвал', 'Не-а 🙈', 'Попробуй ещё'];
     var tries = 0;
@@ -236,6 +237,7 @@
       lastRun = Date.now();
       tries++;
       no.textContent = phrases[(tries - 1) % phrases.length];
+      if (touch) no.classList.add('said');
       var r = no.getBoundingClientRect();
       if (!no.classList.contains('run')) {
         no.style.left = r.left + 'px';
@@ -264,11 +266,12 @@
       if (touch) {
         clearTimeout(backTimer);
         backTimer = setTimeout(function () {
-          no.textContent = startText;
-          // надпись длиннее — подвинуть, чтобы не вылезла за край экрана
+          no.textContent = backText;
+          no.classList.remove('said');
+          // на всякий случай подвинуть, чтобы не вылезла за край экрана
           var vw = document.documentElement.clientWidth, r = no.getBoundingClientRect();
           if (r.right > vw - 12) no.style.left = Math.max(12, vw - 12 - no.offsetWidth) + 'px';
-        }, 2500);
+        }, 3000);
       }
     }
     no.addEventListener('pointerdown', runAway);
